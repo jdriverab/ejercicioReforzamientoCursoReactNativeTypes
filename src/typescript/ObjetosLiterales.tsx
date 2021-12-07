@@ -29,7 +29,7 @@ const ObjetosLiterales = () => {
             <h3>Objetos Literales</h3>
             <code>
                 <pre>
-                    {JSON.stringify(persona, ["nombre"],2)}
+                    {JSON.stringify(persona, null,2)}
                 </pre>
             </code>
             
