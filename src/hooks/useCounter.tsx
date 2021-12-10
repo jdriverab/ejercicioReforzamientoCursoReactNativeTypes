@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useState } from 'react';
 
-const useCounter = (inicial: number = 10) => {
+const useCounter = (inicial:number = 10) => {
 
     const [valor, setValor] = useState(inicial)
 

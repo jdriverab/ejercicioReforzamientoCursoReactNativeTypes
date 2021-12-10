@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Contador = () => {
 
-    const [valor, setValor] = useState<number>(0)
+    const [valor, setValor] = useState<number>(10)
 
     const acumular = (numero:number) => {
         setValor( valor + numero );
