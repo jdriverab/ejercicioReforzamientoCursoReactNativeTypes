@@ -116,15 +116,15 @@ const Login = () => {
             {
                 (token) ?
 
-                <button onClick={logout} className='btn btn-danger'>
-                    Logout
-                </button>
+                    <button onClick={logout} className='btn btn-danger'>
+                        Logout
+                    </button>
 
                 :
 
-                <button onClick={login} className='btn btn-primary'>
-                    Login
-                </button>
+                    <button onClick={login} className='btn btn-primary'>
+                        Login
+                    </button>
                 
             }   
 

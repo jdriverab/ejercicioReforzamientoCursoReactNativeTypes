@@ -3,7 +3,8 @@
 // import Funciones from './typescript/Funciones';
 // import Contador from './componentes/Contador';
 // import ContadorConHook from './componentes/ContadorConHook';
-import Login from './componentes/Login';
+// import Login from './componentes/Login';
+import Usuarios from './componentes/Usuarios';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <Funciones/> */}
       {/* <Contador/> */}
       {/* <ContadorConHook/> */}
-      <Login/>
+      {/* <Login/> */}
+      <Usuarios/>
 
     </div>
     
