@@ -1,49 +1,57 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { reqResApi } from '../api/reqRes';
+import React from 'react';
+import useUsuarios from "../hooks/useUsuarios";
+import { Usuario } from '../interfaces/reqRes';
 
 const Usuarios = () => {
 
+    const {infoUsuarios, cargarUsuarios} = useUsuarios();
 
-    useEffect(()=>{
+    const renderItem = (infoUsuario:Usuario) => {
 
-        // const fetchAsync = async () =>{
-        //     const data = await fetch("https://reqres.in/api/users?page=2").then(res=> res.json()).then(data=>{console.log(data)})
-        // }
-
-        // fetchAsync()
-
-        reqResApi.get("/users").then(res=>console.log(res.data.data)).catch(console.log)
-
-    },[])
+        return(
+            <tr key={infoUsuario.id.toString()}>
+                <td>
+                    {/* Avatar */}
+                    <img src={infoUsuario.avatar} alt="" style={{width:50, borderRadius:100}}/>
+                </td>
+                <td>
+                    {/* Nombre */}
+                    {infoUsuario.first_name} {infoUsuario.last_name}
+                </td>
+                <td>
+                    {/* Correo */}
+                    {infoUsuario.email}
+                </td>
+            </tr>
+        )
+    }
 
     return (
         <>
 
-        <h3>Usuarios</h3>
+            <h3>Usuarios</h3>
 
-        <table className='table'>
-            <thead>
-                <tr>
-                    <th>
-                        Avatar
-                    </th>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Email
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
+            <table className='table'>
+                <thead>
+                    <tr>
+                        <th>
+                            Avatar
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {infoUsuarios.map(renderItem)}
+                    
+                </tbody>
+            </table>
 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <button className='btn btn-primary' onClick={cargarUsuarios}>Siguientes</button>
             
         </>
     )
