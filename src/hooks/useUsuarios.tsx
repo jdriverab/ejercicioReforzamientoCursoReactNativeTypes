@@ -9,8 +9,27 @@ const useUsuarios = () => {
     const [infoUsuarios, setInfoUsuarios] = useState<Usuario[]>([]);
 
     const paginaRef = useRef(1)
+    const paginaTotal = useRef(0)
 
-    
+    // console.log(typeof(paginaTotal.current))
+
+    const paginaAnterior = ()=> {
+        if(paginaRef.current > 1){
+            paginaRef.current --
+            cargarUsuarios()
+        }else{
+            console.log("no podes menos")
+        }
+    }
+
+    const paginaSiguiente = ()=> {
+        if(paginaRef.current < paginaTotal.current){
+            paginaRef.current ++
+            cargarUsuarios()
+        }else{
+            console.log("no podes mas")
+        }
+    }
 
     const cargarUsuarios = async() => {
         const resp = await reqResApi.get<ReqResListado>("/users", {
@@ -20,7 +39,7 @@ const useUsuarios = () => {
         })
         if(resp.data.data.length > 0){
             setInfoUsuarios(resp.data.data)
-            paginaRef.current ++
+            paginaTotal.current = resp.data.total_pages
         } else {
             alert("no hay mas registros")
         }
@@ -41,7 +60,9 @@ const useUsuarios = () => {
 
     return {
         infoUsuarios,
-        cargarUsuarios
+        paginaRef,
+        paginaAnterior, 
+        paginaSiguiente
     }
 }
 
